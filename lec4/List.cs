@@ -26,10 +26,58 @@ namespace lec4
 
         public void Remove(Complex data)
         {
+            if (_first == null)
+                return;
 
+            Node current = _first;
+            Node previous = null;
+
+            while (current != null && current.Data != data )
+            {
+                previous = current;
+                current = current.Next;
+            }
+
+            if (current != null)
+            {
+                if (previous == null)
+                {
+                    if (current.Next == null)
+                    {
+                        _first = null;
+                        _last = null;
+                    }
+                    else
+                    {
+                        _first = _first.Next;
+                    }
+                }
+                else
+                {
+                    previous.Next = current.Next;
+                    if (current.Next == null)
+                    {
+                        _last = previous;
+                    }
+                }
+            }
         }
 
+        public int Count
+        {
+            get
+            {
+                Node current = _first;
+                int count = 0;
+                while (current!= null)
+                {
+                    count++;
+                    current = current.Next;
+                }
 
+                return count;
+            }
+        }
 
 
 
