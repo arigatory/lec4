@@ -3,14 +3,14 @@
 
 namespace lec4
 {
-    public class List
+    public class List<T>
     {
-        private Node _first;
-        private Node _last;
+        private Node<T> _first;
+        private Node<T> _last;
 
-        public void Add(Complex data)
+        public void Add(T data)
         {
-            Node node = new Node(data);
+            Node<T> node = new Node<T>(data);
 
             if (_first == null)
             {
@@ -24,15 +24,15 @@ namespace lec4
             _last = node;
         }
 
-        public void Remove(Complex data)
+        public void Remove(T data)
         {
             if (_first == null)
                 return;
 
-            Node current = _first;
-            Node previous = null;
+            Node<T> current = _first;
+            Node<T> previous = null;
 
-            while (current != null && current.Data != data )
+            while (current != null && !current.Data.Equals(data) )
             {
                 previous = current;
                 current = current.Next;
@@ -63,11 +63,11 @@ namespace lec4
             }
         }
 
-        public Complex this[int i]
+        public T this[int i]
         {
             get
             {
-                Node current = _first;
+                Node<T> current = _first;
                 int count = 0;
                 while (current != null && count < i)
                 {
@@ -75,7 +75,7 @@ namespace lec4
                     current = current.Next;
                 }
 
-                return current?.Data;
+                return current == null? default(T) : current.Data;
             }
         }
 
@@ -86,7 +86,7 @@ namespace lec4
         {
             get
             {
-                Node current = _first;
+                Node<T> current = _first;
                 int count = 0;
                 while (current!= null)
                 {
@@ -100,18 +100,14 @@ namespace lec4
 
 
 
-
-
-
-
-        private class Node
+        private class Node<TData>
         {
-            public Node(Complex data)
+            public Node(TData data)
             {
                 Data = data;
             }
-            public Complex Data { get; set; }
-            public Node Next { get; set; }
+            public TData Data { get; set; }
+            public Node<TData> Next { get; set; }
         }
     }
 }

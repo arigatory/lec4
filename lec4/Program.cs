@@ -7,7 +7,7 @@ namespace lec4
     {
         static void Main(string[] args)
         {
-            List list = new List();
+            List<Complex> list = new List<Complex>();
             Complex c = new Complex(1, 5);
 
             Complex c2 = new Complex(3, 5);
@@ -40,7 +40,22 @@ namespace lec4
                 Console.WriteLine(list[i]);
             }
 
+            Console.WriteLine();
+            List<int> ii = new List<int>();
+
+            ii.Add(5);
+            ii.Add(23);
+            Console.WriteLine(ii.Count);
+            for (int i = 0; i < ii.Count; i++)
+            {
+                Console.WriteLine(ii[i]);
+            }
+
+            Console.WriteLine(list.GetType());
+            Console.WriteLine(ii.GetType());
             Console.ReadLine();
+
+            // в С# нельзя было использовать в качестве ограничения базовые классы в дженерик, теперь в 7.3 можно
         }
     }
 }
