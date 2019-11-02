@@ -63,6 +63,25 @@ namespace lec4
             }
         }
 
+        public Complex this[int i]
+        {
+            get
+            {
+                Node current = _first;
+                int count = 0;
+                while (current != null && count < i)
+                {
+                    count++;
+                    current = current.Next;
+                }
+
+                return current?.Data;
+            }
+        }
+
+
+
+
         public int Count
         {
             get

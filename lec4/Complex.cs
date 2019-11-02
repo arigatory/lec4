@@ -8,6 +8,11 @@ namespace lec4
 {
     public class Complex
     {
+        public Complex(double re, double im)
+        {
+            Re = re;
+            Im = im;
+        }
         public double Re { get; set; }
         public double Im { get; set; }
         public override string ToString()
